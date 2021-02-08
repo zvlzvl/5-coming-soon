@@ -1,6 +1,6 @@
   
 const progressBarData = [
-    141526,
+    /*141526,
     'asfd',
     true,
     false,
@@ -63,7 +63,7 @@ const progressBarData = [
     {
         label: 'Programming',
         value: -0
-    },
+    },*/
     {
         label: 'UX Design',
         value: 90
