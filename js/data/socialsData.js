@@ -7,13 +7,13 @@ const socialsData = [
         icon: 'twitter',
         href: '#'
     },
-    {
+    /*{
         icon: 'hantelis',
         href: '#'
     },
-    4151,
+        4151,
     'adsfdg',
-    [],
+    [],*/
     {
         icon: 'dribbble',
         href: '#'

@@ -1,43 +1,56 @@
+import { Validation } from './Validation.js';
+
+
 class Forms {
     constructor() {
         this.forms = [];
 
-        this.init()
+        this.init();
     }
 
-        init() {
-            this.findAllForms();
-            this.addEvents();
+    init() {
+        this.findAllForms();
+        this.addEvents();
+    }
 
-            console.log(this.forms);
+    findAllForms() {
+        const forms = document.querySelectorAll('.form');
+        this.forms = [...forms];
+    }
 
-        }
-        findAllForms(){
-            const forms = document.querySelectorAll('.form');
-            this.forms=[...forms];
-        }
+    addEvents() {
+        for (const form of this.forms) {
+            const inputs = form.querySelectorAll('input');
+            const textareas = form.querySelectorAll('textarea');
+            const allInputs = [...inputs, ...textareas];
 
-        addEvents() {
-            for (const form of this.forms){
-                const inputs = form.querySelectorAll('input');
-                const textareas = form.querySelectorAll('textarea');
-                const allInputs = [...inputs, ...textareas];
+            const submit = form.querySelector('.btn');
 
-                //const allInputs = form.querySelectorAll('input', 'textarea');
+            submit.addEventListener('click', event => {
+                event.preventDefault();
 
-                const submit = form.querySelector('.btn');
-                
-                submit.addEventListener('click', (event) => {
-                    event.preventDefault();
-        
-                    for (const input of allInputs) {
-                        console.log(input.value);
+                for (const input of allInputs) {
+                    const rule = input.dataset.validationRule;
+                    const text = input.value;
+
+                    switch (rule) {
+                        case 'name':
+                            console.log(Validation.isValidName(text));
+                            break;
+                        case 'email':
+                            console.log(Validation.isValidEmail(text));
+                            break;
+                        case 'text':
+                            console.log(Validation.isValidText(text));
+                            break;
+
+                        default:
+                            break;
                     }
-                })
-            }
+                }
+            })
         }
+    }
 }
-
-
 
 export { Forms }
